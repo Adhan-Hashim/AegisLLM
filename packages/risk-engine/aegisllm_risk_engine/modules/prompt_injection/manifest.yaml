@@ -1,0 +1,9 @@
+id: prompt_injection
+version: 1.0.0
+author: AegisLLM
+priority: 20
+depends_on: []
+events:
+  - PromptNormalized
+publishes:
+  - FindingCreated

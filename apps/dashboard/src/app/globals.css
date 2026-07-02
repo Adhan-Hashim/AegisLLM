@@ -7,8 +7,20 @@
   --card: #111827;
   --card-foreground: #ededed;
   
+  --popover: #09090B;
+  --popover-foreground: #ededed;
+  
   --primary: #00E5FF;
   --primary-foreground: #09090B;
+  
+  --secondary: #27272a;
+  --secondary-foreground: #ededed;
+  
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  
+  --accent: #27272a;
+  --accent-foreground: #ededed;
   
   --success: #22C55E;
   --success-foreground: #ffffff;
@@ -19,10 +31,15 @@
   --danger: #EF4444;
   --danger-foreground: #ffffff;
   
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  
   --accent-purple: #8B5CF6;
   --accent-purple-foreground: #ffffff;
   
   --border: #27272a;
+  --input: #27272a;
+  --ring: #00E5FF;
 }
 
 @theme inline {
@@ -32,8 +49,20 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
@@ -44,10 +73,15 @@
   --color-danger: var(--danger);
   --color-danger-foreground: var(--danger-foreground);
   
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
   --color-accent-purple: var(--accent-purple);
   --color-accent-purple-foreground: var(--accent-purple-foreground);
 
   --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   --font-sans: var(--font-inter), var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-jetbrains-mono), var(--font-geist-mono), monospace;

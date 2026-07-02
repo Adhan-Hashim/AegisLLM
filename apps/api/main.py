@@ -1,10 +1,12 @@
-from fastapi import FastAPI
+import time
+from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI(
     title="AegisLLM API Gateway",
     description="Enterprise-Grade AI Firewall & Guardrails Platform",
-    version="0.1.0",
+    version="1.0.0",
 )
 
 # CORS configuration
@@ -16,10 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"status": "ok", "message": "AegisLLM API Gateway is running"}
+# We will mount routers here later
+from routers import system, analyze, rules, replay
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+app.include_router(system.router)
+app.include_router(analyze.router)
+app.include_router(rules.router)
+app.include_router(replay.router)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
