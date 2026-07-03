@@ -87,8 +87,8 @@ export default function LandingPage() {
     patterns: [ssn, credit_card]`}</pre>
             </div>
 
-            {/* Huge overlapping pull quote */}
-            <div className="absolute top-[380px] left-0 md:-left-8 right-0 z-30">
+            {/* Huge pull quote */}
+            <div className="absolute top-[520px] left-0 md:-left-8 right-0 z-30">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-2xl">
                 We believe that AI security should be both <span className="italic font-light text-orange-500">deterministic</span> and meaningful, where each evaluation protects your core infrastructure.
               </h2>
