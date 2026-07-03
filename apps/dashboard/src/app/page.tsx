@@ -131,7 +131,7 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="w-full px-8 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-gray-200 fixed top-0 z-50">
         <div className="flex items-center gap-3">
-          <Shield className="w-8 h-8 text-blue-600" />
+          <img src="/logo.png" alt="AegisLLM Logo" className="w-10 h-10" />
           <span className="text-xl font-bold tracking-tight text-gray-900">AegisLLM</span>
         </div>
         <div className="flex items-center gap-6">

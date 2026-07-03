@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/shield-check.svg" width="80" alt="AegisLLM Logo"/>
+  <img src="apps/dashboard/public/logo.png" width="120" alt="AegisLLM Logo"/>
   <h1>AegisLLM</h1>
   <p>
     <strong>The open-source, event-driven Risk Engine for Large Language Models.</strong>
