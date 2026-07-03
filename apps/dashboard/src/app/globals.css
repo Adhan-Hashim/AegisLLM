@@ -95,6 +95,18 @@ body {
   color-scheme: dark;
 }
 
+@layer base {
+  a:focus-visible, 
+  button:focus-visible, 
+  input:focus-visible, 
+  textarea:focus-visible, 
+  select:focus-visible, 
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px #3b82f6 !important;
+  }
+}
+
 /* Glassmorphism utility classes */
 @layer utilities {
   .glass-card {

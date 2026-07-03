@@ -190,6 +190,13 @@ export default function AttackLabPage() {
               <h3 className="font-semibold text-sm flex items-center gap-2"><Clock className="w-4 h-4" /> Timeline</h3>
             </div>
             <div className="flex-1 overflow-y-auto p-4 space-y-2">
+              {events.length === 0 && isRunning && (
+                <div className="p-4 rounded bg-background/50 border border-border/50 border-dashed animate-pulse flex flex-col gap-3">
+                  <span className="font-mono text-xs font-bold text-muted-foreground flex items-center gap-2"><Activity className="w-3 h-3 animate-spin text-primary"/> Connecting to Engine...</span>
+                  <span className="font-mono text-xs font-bold text-muted-foreground flex items-center gap-2"><Activity className="w-3 h-3 animate-spin text-primary"/> Initializing pipeline...</span>
+                  <span className="font-mono text-xs font-bold text-muted-foreground flex items-center gap-2"><Activity className="w-3 h-3 animate-spin text-primary"/> Waiting for first event...</span>
+                </div>
+              )}
               {events.map((ev, i) => (
                 <div 
                   key={i} 
@@ -211,7 +218,7 @@ export default function AttackLabPage() {
               <h3 className="font-semibold text-sm flex items-center gap-2"><Link2 className="w-4 h-4" /> Explainability Graph</h3>
             </div>
             <div className="flex-1 bg-background/50 relative">
-              <ExplainabilityGraph />
+              <ExplainabilityGraph model={null as any} />
             </div>
           </div>
 

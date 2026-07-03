@@ -158,20 +158,23 @@ export default function LandingPage() {
             AegisLLM helps you verify, explain, and secure every request <strong className="font-medium text-gray-900">before</strong> it reaches your model.
           </p>
           
-          <div className="flex justify-center gap-4 pt-4">
-            <Link 
-              href="/attack-lab" 
-              className="px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-all flex items-center gap-2 group"
-            >
-              Simulate an Attack
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link 
-              href="/api-explorer" 
-              className="px-8 py-4 bg-white text-gray-700 border border-gray-300 text-lg font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              Explore the API
-            </Link>
+          <div className="flex flex-col items-center gap-3 pt-4">
+            <div className="flex justify-center gap-4">
+              <Link 
+                href="/attack-lab" 
+                className="px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-all flex items-center gap-2 group"
+              >
+                Simulate an Attack
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link 
+                href="/api-explorer" 
+                className="px-8 py-4 bg-white text-gray-700 border border-gray-300 text-lg font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                Explore the API
+              </Link>
+            </div>
+            <p className="text-sm text-gray-500">No setup required. Live streaming.</p>
           </div>
         </div>
 

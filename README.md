@@ -40,11 +40,11 @@ AegisLLM is built for the critical path. Our engine executes complex multi-rule 
 
 | Category             | Accuracy | Avg Latency |
 |----------------------|----------|-------------|
-| Prompt Injection     | 98.4%    | 18.2 ms     |
-| PII Detection        | 97.2%    | 14.5 ms     |
-| SQL Injection        | 96.8%    | 19.8 ms     |
-| Safe Prompts         | 99.1%    | 12.1 ms     |
-| **Overall**          | **98.4%**| **14.2 ms** |
+| Prompt Injection     | 98.6%    | 18.3 ms     |
+| PII Detection        | 97.3%    | 14.5 ms     |
+| SQL Injection        | 96.8%    | 20.4 ms     |
+| Safe Prompts         | 99.1%    | 12.5 ms     |
+| **Overall**          | **98.6%**| **14.4 ms** |
 
 *(Benchmarks generated against v1.0.0-rc.0 via `benchmarks/run_benchmarks.py`)*
 

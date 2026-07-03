@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Copy, Terminal, Code2, Braces, Play } from 'lucide-react';
+import { Copy, Terminal, Code2, Braces, Play, CheckCircle } from 'lucide-react';
 
 const ENDPOINTS = [
   {
@@ -86,7 +86,7 @@ console.log(data);`
   const handleCopy = () => {
     navigator.clipboard.writeText(snippets[activeTab]);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 3000);
   };
 
   return (
@@ -170,8 +170,8 @@ console.log(data);`
                 onClick={handleCopy}
                 className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 bg-gray-800 rounded"
               >
-                <Copy className="w-3 h-3" />
-                {copied ? 'Copied!' : 'Copy Code'}
+                {copied ? <CheckCircle className="w-3 h-3 text-green-500" /> : <Copy className="w-3 h-3" />}
+                {copied ? <span className="text-green-500">Copied!</span> : 'Copy Code'}
               </button>
             </div>
             <pre className="p-4 text-sm font-mono text-blue-300 overflow-x-auto">

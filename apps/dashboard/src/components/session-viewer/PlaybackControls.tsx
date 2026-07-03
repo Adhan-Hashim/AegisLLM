@@ -39,42 +39,42 @@ export function PlaybackControls({ player }: PlaybackControlsProps) {
   }, [state.status, play, pause, stepForward, stepBackward, jumpToStart, jumpToEnd]);
 
   return (
-    <div className="flex items-center space-x-4 p-4 border-t bg-gray-50">
+    <div className="flex items-center space-x-4 p-4 border-t border-border/50 bg-card/50">
       <div className="flex space-x-2">
-        <button onClick={jumpToStart} className="p-2 hover:bg-gray-200 rounded" title="Jump to Start (Home)">
+        <button onClick={jumpToStart} className="p-2 hover:bg-secondary rounded text-muted-foreground hover:text-foreground" title="Jump to Start (Home)">
           ⏮
         </button>
-        <button onClick={() => stepBackward()} className="p-2 hover:bg-gray-200 rounded" title="Step Backward (Left Arrow)">
+        <button onClick={() => stepBackward()} className="p-2 hover:bg-secondary rounded text-muted-foreground hover:text-foreground" title="Step Backward (Left Arrow)">
           ◀
         </button>
         <button 
           onClick={state.status === 'playing' ? pause : play} 
-          className="p-2 hover:bg-gray-200 rounded"
+          className="p-2 hover:bg-secondary rounded text-primary hover:text-primary-foreground"
           title="Play/Pause (Space)"
         >
           {state.status === 'playing' ? '⏸' : '▶'}
         </button>
-        <button onClick={() => stepForward()} className="p-2 hover:bg-gray-200 rounded" title="Step Forward (Right Arrow)">
-          ▶▶
+        <button onClick={() => stepForward()} className="p-2 hover:bg-secondary rounded text-muted-foreground hover:text-foreground" title="Step Forward (Right Arrow)">
+          ▶
         </button>
-        <button onClick={jumpToEnd} className="p-2 hover:bg-gray-200 rounded" title="Jump to End (End)">
+        <button onClick={jumpToEnd} className="p-2 hover:bg-secondary rounded text-muted-foreground hover:text-foreground" title="Jump to End (End)">
           ⏭
         </button>
       </div>
       
-      <div className="flex space-x-2 border-l pl-4">
-        {[0.5, 1, 2].map(speed => (
+      <div className="flex space-x-2 border-l border-border/50 pl-4">
+        {[0.5, 1, 2, 4].map(speed => (
           <button
             key={speed}
             onClick={() => setSpeed(speed)}
-            className={`px-3 py-1 text-sm rounded ${state.speed === speed ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-200'}`}
+            className={`px-3 py-1 text-xs font-semibold rounded ${state.speed === speed ? 'bg-primary text-primary-foreground' : 'hover:bg-secondary text-muted-foreground hover:text-foreground'}`}
           >
             {speed}×
           </button>
         ))}
       </div>
 
-      <div className="flex-grow text-right text-sm text-gray-500 font-mono">
+      <div className="flex-grow text-right text-xs text-muted-foreground font-mono">
         {state.currentTimeMs.toFixed(0)}ms / {state.durationMs}ms
       </div>
     </div>

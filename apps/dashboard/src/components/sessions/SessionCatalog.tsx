@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { ReplaySession } from '../../lib/replay/types';
 import { SessionCard } from './SessionCard';
+import { SearchX } from 'lucide-react';
 
 interface SessionCatalogProps {
   sessions: ReplaySession[];
@@ -144,7 +145,11 @@ export function SessionCatalog({ sessions, selectedSessionId, onSelectSession }:
 
       <div className="flex-grow overflow-y-auto p-4 space-y-3">
         {filteredSessions.length === 0 ? (
-          <div className="text-center text-gray-500 italic mt-10">No sessions match your filters.</div>
+          <div className="flex flex-col items-center justify-center text-gray-500 mt-16 gap-3">
+            <SearchX className="w-12 h-12 text-gray-300" />
+            <p className="text-sm font-medium">No sessions found</p>
+            <p className="text-xs text-gray-400">Try adjusting your filters or search query.</p>
+          </div>
         ) : (
           filteredSessions.map(session => (
             <SessionCard 

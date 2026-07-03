@@ -81,6 +81,21 @@ export default function RulesStudioPage() {
     }
   }, [monaco]);
 
+  // Global Ctrl+S Interceptor
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        // Trigger save if we can
+        if (saveState !== SaveState.CLEAN && saveState !== SaveState.SAVING && activeRule && diagnostics.errors.length === 0) {
+          manualSave(yamlContent);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [saveState, activeRule, diagnostics.errors.length, yamlContent, manualSave]);
+
   const runValidation = useCallback((content: string) => {
     const { document, syntaxDiagnostics } = parseRule(content);
     const semanticDiagnostics = validateRule(document);
