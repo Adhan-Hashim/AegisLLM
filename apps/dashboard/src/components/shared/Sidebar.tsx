@@ -5,7 +5,7 @@ export function Sidebar() {
   return (
     <div className="w-64 border-r border-border/50 bg-card/50 flex flex-col h-screen p-4">
       <div className="flex items-center justify-center px-2 py-4 mb-6">
-        <img src="/logo.png" alt="AegisLLM Logo" className="h-24 object-contain" />
+        <img src="/logo.png" alt="AegisLLM Logo" className="h-16 object-contain" />
       </div>
 
       <nav className="flex flex-col gap-1">
