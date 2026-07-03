@@ -21,17 +21,17 @@ export default function LandingPage() {
 
       <main className="px-8 md:px-16 pt-4 pb-32 max-w-[1800px] mx-auto">
         {/* Hero Section */}
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center pt-4 pb-12">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-orange-500 font-bold tracking-widest text-sm uppercase">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center pt-8 pb-12">
+          <div className="mb-4">
+            <span className="text-orange-500 font-bold tracking-widest text-xs md:text-sm uppercase">
               (1) Enterprise-Grade Security
             </span>
           </div>
           
-          <img src="/logo.png" alt="AegisLLM Logo" className="w-[300px] md:w-[400px] lg:w-[450px] object-contain opacity-95 mb-10 drop-shadow-2xl" />
+          <img src="/logo.png" alt="AegisLLM Logo" className="w-[240px] md:w-[280px] lg:w-[320px] object-contain opacity-95 mb-6 drop-shadow-2xl" />
           
-          <div className="flex justify-center text-center">
-            <p className="text-xl md:text-2xl text-gray-400 font-light italic max-w-2xl leading-snug">
+          <div className="flex justify-center text-center px-4">
+            <p className="text-lg md:text-xl text-gray-400 font-light italic max-w-xl leading-snug">
               We help AI engineers realize the full potential of their security pipeline.
             </p>
           </div>
