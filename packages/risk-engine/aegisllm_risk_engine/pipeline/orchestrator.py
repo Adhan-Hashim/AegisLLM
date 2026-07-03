@@ -21,6 +21,7 @@ class FindingCreated(BaseEvent): pass
 class RiskCalculated(BaseEvent): pass
 class DecisionGenerated(BaseEvent): pass
 class FingerprintGenerated(BaseEvent): pass
+class AnalysisCompleted(BaseEvent): pass
 
 class PipelineOrchestrator:
     """The central orchestrator for the risk engine, returning a full AnalysisSession."""
@@ -127,5 +128,13 @@ class PipelineOrchestrator:
         # 8. Wrap up metrics
         end_time_ns = time.perf_counter_ns()
         session.metrics["total_processing_time_ns"] = end_time_ns - session.start_time_ns
+        
+        # 9. Emit final AnalysisCompleted event to store the full session representation
+        self._publish(AnalysisCompleted(
+            correlation_id=session.correlation_id,
+            module="PipelineOrchestrator",
+            version="1.0.0",
+            payload={"session": session.model_dump()}
+        ))
         
         return session

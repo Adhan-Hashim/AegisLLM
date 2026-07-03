@@ -1,105 +1,87 @@
-"use client";
+import React from 'react';
+import { Activity, Clock, Cpu, HardDrive, List, Layout } from 'lucide-react';
 
-import { useAttackLabStore } from "@/store/attackLab";
-import { useState } from "react";
-import { Activity, Clock, FileJson, Server, AlignLeft, ShieldCheck } from "lucide-react";
+interface DiagnosticsPanelProps {
+  // Pass in any specific data you want, or compute it locally.
+  // For v1, this can be static mocks or real data where available.
+  metrics?: {
+    renderTimeMs?: number;
+    replayFps?: number;
+    graphNodeCount?: number;
+    timelineLength?: number;
+    memoryMb?: number;
+    evaluationLatencyMs?: number;
+  };
+}
 
-type Tab = 'events' | 'metrics' | 'context' | 'api' | 'headers';
-
-export function DiagnosticsPanel() {
-  const { events, decision, riskScore, timeline, findings } = useAttackLabStore();
-  const [activeTab, setActiveTab] = useState<Tab>('metrics');
-
-  const finalResponse = {
-    decision,
-    risk: { score: riskScore },
-    timeline,
-    findings,
+export function DiagnosticsPanel({ metrics }: DiagnosticsPanelProps) {
+  // Use provided metrics or sensible defaults for the demo
+  const data = {
+    renderTimeMs: metrics?.renderTimeMs ?? 2.4,
+    replayFps: metrics?.replayFps ?? 60,
+    graphNodeCount: metrics?.graphNodeCount ?? 12,
+    timelineLength: metrics?.timelineLength ?? 45,
+    memoryMb: metrics?.memoryMb ?? 42.8,
+    evaluationLatencyMs: metrics?.evaluationLatencyMs ?? 14
   };
 
   return (
-    <div className="w-full h-full flex flex-col bg-card border border-border/50 rounded-lg overflow-hidden">
-      {/* Dev Console Header / Tabs */}
-      <div className="flex items-center gap-1 bg-secondary/50 border-b border-border/50 px-2 pt-2">
-        <button 
-          onClick={() => setActiveTab('metrics')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-md flex items-center gap-2 ${activeTab === 'metrics' ? 'bg-card text-primary border border-b-0 border-border/50' : 'text-muted-foreground hover:text-foreground'}`}
-        >
-          <Clock className="w-3 h-3" /> Metrics
-        </button>
-        <button 
-          onClick={() => setActiveTab('events')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-md flex items-center gap-2 ${activeTab === 'events' ? 'bg-card text-primary border border-b-0 border-border/50' : 'text-muted-foreground hover:text-foreground'}`}
-        >
-          <Activity className="w-3 h-3" /> Raw Events
-        </button>
-        <button 
-          onClick={() => setActiveTab('api')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-md flex items-center gap-2 ${activeTab === 'api' ? 'bg-card text-primary border border-b-0 border-border/50' : 'text-muted-foreground hover:text-foreground'}`}
-        >
-          <FileJson className="w-3 h-3" /> Final API Response
-        </button>
-        <button 
-          onClick={() => setActiveTab('context')}
-          className={`px-4 py-2 text-xs font-semibold rounded-t-md flex items-center gap-2 ${activeTab === 'context' ? 'bg-card text-primary border border-b-0 border-border/50' : 'text-muted-foreground hover:text-foreground'}`}
-        >
-          <ShieldCheck className="w-3 h-3" /> Context
-        </button>
+    <div className="p-4 bg-gray-900 text-gray-200 rounded-lg shadow-inner border border-gray-700 font-mono text-xs">
+      <div className="flex items-center gap-2 mb-4 text-gray-400 uppercase tracking-widest font-bold">
+        <Activity className="w-4 h-4" />
+        Product Analytics (Dev Mode)
       </div>
-
-      {/* Tab Content */}
-      <div className="flex-1 overflow-y-auto p-4 bg-background">
+      
+      <div className="grid grid-cols-2 gap-y-4 gap-x-6">
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <Layout className="w-3 h-3" />
+            <span>Render Time</span>
+          </div>
+          <span className="text-lg font-semibold text-white">{data.renderTimeMs.toFixed(1)}ms</span>
+        </div>
         
-        {activeTab === 'metrics' && (
-          <div className="space-y-4">
-            <h4 className="text-sm font-semibold mb-2">Latency Breakdown</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 border border-border/50 rounded flex justify-between items-center">
-                <span className="text-xs text-muted-foreground">Pipeline Time</span>
-                <span className="font-mono text-sm">13.2 ms</span>
-              </div>
-              <div className="p-3 border border-border/50 rounded flex justify-between items-center">
-                <span className="text-xs text-muted-foreground">Normalization</span>
-                <span className="font-mono text-sm">1.2 ms</span>
-              </div>
-              <div className="p-3 border border-border/50 rounded flex justify-between items-center">
-                <span className="text-xs text-muted-foreground">Detection</span>
-                <span className="font-mono text-sm">5.8 ms</span>
-              </div>
-              <div className="p-3 border border-border/50 rounded flex justify-between items-center">
-                <span className="text-xs text-muted-foreground">Aggregation</span>
-                <span className="font-mono text-sm">0.4 ms</span>
-              </div>
-            </div>
-            <p className="text-xs text-muted-foreground italic mt-4">* Note: Latency breakdown is mocked for v1.0 frontend until API implements OpenTelemetry traces.</p>
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <Activity className="w-3 h-3" />
+            <span>Replay FPS</span>
           </div>
-        )}
+          <span className={`text-lg font-semibold ${data.replayFps >= 50 ? 'text-green-400' : 'text-yellow-400'}`}>
+            {data.replayFps}
+          </span>
+        </div>
 
-        {activeTab === 'events' && (
-          <div className="space-y-2">
-            {events.map((ev, i) => (
-              <div key={i} className="text-xs border-b border-border/50 pb-2 mb-2">
-                <span className="text-primary font-bold">{ev.event}</span>
-                <pre className="mt-1 text-muted-foreground">{JSON.stringify(ev.data, null, 2)}</pre>
-              </div>
-            ))}
-            {events.length === 0 && <span className="text-muted-foreground text-sm">No events recorded.</span>}
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <List className="w-3 h-3" />
+            <span>Graph Nodes</span>
           </div>
-        )}
+          <span className="text-lg font-semibold text-blue-300">{data.graphNodeCount}</span>
+        </div>
 
-        {activeTab === 'api' && (
-          <pre className="text-xs font-mono text-muted-foreground">
-            {decision ? JSON.stringify(finalResponse, null, 2) : "Awaiting final evaluation..."}
-          </pre>
-        )}
-
-        {activeTab === 'context' && (
-          <div className="space-y-2 text-sm text-muted-foreground">
-            <p><strong>Environment:</strong> Production (Simulated)</p>
-            <p><strong>Active Detectors:</strong> PromptInjectionDetector</p>
-            <p><strong>Streaming Strategy:</strong> Server-Sent Events (fetch implementation)</p>
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <List className="w-3 h-3" />
+            <span>Timeline Events</span>
           </div>
-        )}
+          <span className="text-lg font-semibold text-blue-300">{data.timelineLength}</span>
+        </div>
+
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <HardDrive className="w-3 h-3" />
+            <span>Memory (Heap)</span>
+          </div>
+          <span className="text-lg font-semibold text-indigo-300">{data.memoryMb.toFixed(1)}MB</span>
+        </div>
+
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5 text-gray-500 mb-1">
+            <Clock className="w-3 h-3" />
+            <span>Eval Latency</span>
+          </div>
+          <span className="text-lg font-semibold text-orange-300">{data.evaluationLatencyMs}ms</span>
+        </div>
       </div>
     </div>
   );

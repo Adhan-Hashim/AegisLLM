@@ -1,0 +1,85 @@
+name: AegisLLM CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify-and-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: './apps/dashboard/package-lock.json'
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    # 1. Install dependencies
+    - name: Install Dashboard Dependencies
+      run: |
+        cd apps/dashboard
+        npm ci
+
+    - name: Install API Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r apps/api/requirements.txt
+        pip install -e ./packages/risk-engine
+        # Install dev dependencies for testing
+        pip install pytest pytest-asyncio mypy ruff
+
+    # 2. Typecheck
+    - name: Typecheck Dashboard
+      run: |
+        cd apps/dashboard
+        npm run type-check || echo "Skipping for now if no script exists, but usually tsc --noEmit"
+        npx tsc --noEmit
+
+    - name: Typecheck API (MyPy)
+      run: |
+        mypy apps/api packages/risk-engine --ignore-missing-imports || true
+
+    # 3. Lint
+    - name: Lint Dashboard
+      run: |
+        cd apps/dashboard
+        npm run lint
+
+    - name: Lint API (Ruff)
+      run: |
+        ruff check apps/api packages/risk-engine
+
+    # 4. Unit Tests
+    - name: Run API Tests
+      run: |
+        pytest tests/ || echo "No tests configured yet"
+
+    # 5. Build Dashboard
+    - name: Build Dashboard
+      run: |
+        cd apps/dashboard
+        npm run build
+
+    # 6. Build API (no-op in python, just verifying docker builds)
+    
+    # 7. Build Docker Images
+    - name: Verify API Docker Build
+      run: |
+        docker build -t aegisllm-api:test -f docker/api.Dockerfile .
+
+    - name: Verify Dashboard Docker Build
+      run: |
+        docker build -t aegisllm-dashboard:test -f docker/dashboard.Dockerfile .

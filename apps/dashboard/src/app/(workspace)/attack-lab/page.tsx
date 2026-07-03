@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAttackLabStore } from "@/store/attackLab";
 import { streamService } from "@/services/stream";
 import { API_BASE_URL } from "@/services/api";
-import { Play, Box, CheckCircle, Activity, Clock, Server, Copy, Download, Link2 } from "lucide-react";
+import { Play, Box, CheckCircle, Activity, Clock, Server, Copy, Download, Link2, ShieldAlert } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExplainabilityGraph } from "@/components/explainability/ExplainabilityGraph";
 import { InspectorPanel } from "@/components/inspector/InspectorPanel";
