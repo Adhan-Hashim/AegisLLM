@@ -8,7 +8,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#111111] text-[#f4f4f4] font-sans selection:bg-orange-500/30 overflow-x-hidden">
       {/* Navigation */}
-      <nav className="w-full px-8 md:px-16 py-8 flex justify-end items-start">
+      <nav className="w-full px-8 md:px-16 py-8 flex justify-center items-start">
         <div className="hidden md:flex items-center space-x-12 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
           <Link href="/attack-lab" className="hover:text-white transition-colors">Attack Lab</Link>
           <Link href="/rules-studio" className="hover:text-white transition-colors">Rules Studio</Link>
