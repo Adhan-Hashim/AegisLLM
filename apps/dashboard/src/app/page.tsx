@@ -1,97 +1,139 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Menu } from "lucide-react";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({ subsets: ["latin"], weight: ["700", "900"] });
+import React from "react";
+import { Terminal, ArrowRight } from "lucide-react";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#161a1d] text-gray-300 relative overflow-hidden font-sans">
-      {/* Diagonal Glass Overlays */}
-      <div className="absolute top-0 left-0 w-[150%] h-[150%] pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[20%] w-[20%] h-[200%] bg-white/[0.02] backdrop-blur-3xl transform rotate-[35deg] shadow-2xl"></div>
-        <div className="absolute top-[-30%] left-[45%] w-[10%] h-[200%] bg-black/30 backdrop-blur-xl transform rotate-[35deg]"></div>
-      </div>
-
-      <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Navigation */}
-        <nav className="w-full px-8 py-8 flex justify-between items-center">
-          <div className="flex items-center gap-3 text-white">
-            <img src="/logo.png" alt="AegisLLM Logo" className="h-10 object-contain" />
-            <span className="text-sm font-bold tracking-[0.2em] uppercase mt-1">AegisLLM</span>
+    <div className="min-h-screen bg-[#111111] text-[#f4f4f4] font-sans selection:bg-orange-500/30 overflow-x-hidden">
+      {/* Minimal Navigation */}
+      <nav className="w-full px-8 md:px-16 py-12 flex justify-between items-start">
+        <div className="flex flex-col items-center">
+          {/* We do NOT invert this logo because the background is dark and the logo is white */}
+          <img src="/logo.png" alt="AegisLLM Logo" className="h-24 object-contain" />
+        </div>
+        
+        {/* Right side navigation - vertically aligned for aesthetic minimalism */}
+        <div className="hidden md:flex flex-col items-end space-y-4 pt-4 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
+          <Link href="/attack-lab" className="hover:text-white transition-colors">Attack Lab</Link>
+          <Link href="/rules-studio" className="hover:text-white transition-colors">Rules Studio</Link>
+          <Link href="/sessions" className="hover:text-white transition-colors">Sessions</Link>
+          <div className="pt-4">
+            <Link href="/attack-lab" className="text-orange-500 hover:text-orange-400 border-b border-orange-500/50 pb-1">
+              Go to Console
+            </Link>
           </div>
-          <div className="flex items-center gap-8">
-            <button className="text-gray-400 hover:text-white transition-colors">
-              <Search className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors cursor-pointer group">
-              <span className="text-xs tracking-widest uppercase font-semibold">Menu</span>
-              <div className="p-2 border border-gray-700/50 rounded bg-white/5 group-hover:bg-white/10 transition-colors">
-                <Menu className="w-4 h-4" />
-              </div>
-            </div>
-          </div>
-        </nav>
+        </div>
+      </nav>
 
-        {/* Main Content Area */}
-        <main className="flex-1 flex flex-col md:flex-row relative">
+      <main className="px-8 md:px-16 pt-16 pb-32 max-w-[1800px] mx-auto">
+        {/* Hero Section */}
+        <div className="max-w-7xl">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-orange-500 font-bold tracking-widest text-sm uppercase">
+              (1) Enterprise-Grade Security
+            </span>
+          </div>
           
-          {/* Left Vertical Pagination */}
-          <div className="hidden md:flex flex-col justify-center gap-8 px-10 text-xs font-semibold tracking-widest text-gray-600">
-            <div className="hover:text-white cursor-pointer transition-colors">01</div>
-            <div className="hover:text-white cursor-pointer transition-colors">02</div>
-            <div className="flex items-center gap-4 text-white font-bold">
-              <div className="w-8 h-[2px] bg-[#ff5722]"></div>
-              03
-            </div>
-            <div className="hover:text-white cursor-pointer transition-colors">04</div>
+          <h1 className="text-[5rem] md:text-[8rem] lg:text-[11rem] font-black tracking-tighter leading-[0.85] text-white mb-12">
+            Welcome to<br/>AegisLLM.
+          </h1>
+          
+          <div className="flex justify-center md:justify-start md:pl-[20%]">
+            <p className="text-2xl md:text-3xl text-gray-400 font-light italic max-w-2xl leading-snug">
+              We help AI engineers realize the full potential of their security pipeline.
+            </p>
           </div>
+        </div>
 
-          {/* Center Content */}
-          <div className="flex-1 flex flex-col justify-center pl-8 md:pl-20 z-20">
-            <h1 className={`${playfair.className} text-6xl md:text-8xl font-black text-[#e8e4db] leading-[0.9] tracking-tight uppercase`}>
-              Aegis <br /> <span className="font-light italic opacity-90 tracking-normal">Dark</span>
-            </h1>
+        {/* Lower Grid Section */}
+        <div className="mt-40 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
+          
+          {/* Aesthetic Code Blocks (Left) */}
+          <div className="lg:col-span-6 relative h-[700px] w-full">
+            {/* Terminal Window 1 */}
+            <div className="absolute top-0 left-0 w-[80%] md:w-[60%] bg-[#1a1a1a] border border-[#333] rounded-lg shadow-2xl p-6 z-10">
+              <div className="flex gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <pre className="text-orange-400 font-mono text-sm leading-relaxed overflow-hidden">
+{`POST /v1/evaluate
+{
+  "prompt": "Ignore previous instructions",
+  "metadata": { "user": "ext_991" }
+}
+
+=> RISK_SCORE: 98
+=> ACTION: BLOCK`}</pre>
+            </div>
             
-            <div className="mt-12">
-              <Link href="/attack-lab" className="inline-block px-10 py-3 bg-[#ff5722] hover:bg-[#ff7043] text-white text-xs font-bold tracking-[0.2em] uppercase rounded transition-all shadow-[0_0_20px_rgba(255,87,34,0.3)]">
-                Discover
-              </Link>
+            {/* Terminal Window 2 (overlapping) */}
+            <div className="absolute top-48 right-0 md:right-10 w-[80%] md:w-[60%] bg-[#0a0a0a] border border-[#222] rounded-lg shadow-2xl p-6 z-20 opacity-95 backdrop-blur-md">
+               <div className="flex gap-2 mb-4">
+                <Terminal className="w-4 h-4 text-gray-500" />
+                <span className="text-xs text-gray-500 font-mono">rules.yaml</span>
+              </div>
+              <pre className="text-gray-300 font-mono text-sm leading-relaxed overflow-hidden">
+{`detectors:
+  - id: prompt_injection
+    type: heuristic
+    threshold: high
+    
+  - id: pii_leakage
+    type: regex
+    patterns: [ssn, credit_card]`}</pre>
             </div>
 
-            {/* Bottom Text Columns */}
-            <div className="mt-auto mb-12 flex flex-col md:flex-row gap-8 md:gap-12 max-w-2xl text-xs leading-relaxed text-gray-500 pt-20">
-              <div className="flex-1">
-                <h4 className="text-white font-bold mb-2">Risk Engine</h4>
-                <p>This engine intercepts every payload before it reaches your LLM. It relies on concurrent execution across a suite of advanced deterministic and AI-driven rules to provide latency-free security.</p>
-              </div>
-              <div className="flex-1">
-                <h4 className="text-white font-bold mb-2">Minimalist</h4>
-                <p>A declarative YAML schema ensures authoring detectors requires no custom code, complemented by the incredibly fast forensic replay functionality.</p>
+            {/* Huge overlapping pull quote */}
+            <div className="absolute top-[380px] left-0 md:-left-8 right-0 z-30">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-2xl">
+                We believe that AI security should be both <span className="italic font-light text-orange-500">deterministic</span> and meaningful, where each evaluation protects your core infrastructure.
+              </h2>
+            </div>
+            
+            {/* Decorative Asterisk */}
+            <div className="absolute bottom-0 left-[40%] text-orange-500 text-[10rem] leading-none opacity-20 -z-10 select-none">
+              *
+            </div>
+          </div>
+
+          {/* Text Content (Right) */}
+          <div className="lg:col-span-5 lg:col-start-8 grid grid-cols-1 md:grid-cols-2 gap-12 text-sm text-gray-400 leading-relaxed font-medium mt-16 lg:mt-0">
+            <div>
+              <p className="mb-6">
+                As multidisciplinary engineers and security researchers, we consider the synthesis of deterministic speed and LLM flexibility to be at the heart of our work.
+              </p>
+              <p>
+                We collaborate closely with teams globally, including machine learning engineers, DevOps architects, and compliance officers from regulated industries.
+              </p>
+            </div>
+            <div>
+              <p className="mb-6">
+                AegisLLM is an open-source security gateway specializing in innovative solutions for GenAI pipelines in both public and private deployments.
+              </p>
+              <p className="mb-12">
+                Our platform's unique blend of ultra-low latency Rust-backed streaming and high-accuracy detection is balanced with exceptional attention to developer experience.
+              </p>
+              
+              <div className="border-t border-[#333] pt-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-orange-500 font-bold tracking-widest text-xs uppercase">
+                    (2) Ready to start?
+                  </span>
+                  <span className="text-orange-500">+</span>
+                </div>
+                <Link href="/attack-lab" className="text-white hover:text-orange-500 transition-colors inline-flex items-center gap-2 font-bold text-lg border-b border-transparent hover:border-orange-500 pb-1">
+                  Explore the Attack Lab <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Right Image & Social Links */}
-          <div className="flex-1 flex relative justify-end items-center pointer-events-none">
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-3xl translate-x-[15%]">
-              <img src="/hero_shield.png" alt="3D Shield" className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.7)] opacity-95" />
-            </div>
-
-            {/* Right Vertical Links */}
-            <div className="hidden md:flex flex-col items-center justify-center gap-16 px-10 text-[10px] font-bold tracking-[0.3em] uppercase text-gray-500 pointer-events-auto h-full absolute right-0">
-              <a href="https://github.com/Adhan-Hashim/AegisLLM" className="-rotate-90 hover:text-white cursor-pointer transition-colors w-16 text-center block">GITHUB</a>
-              <div className="w-[1px] h-12 bg-gray-700"></div>
-              <a href="/rules-studio" className="-rotate-90 hover:text-white cursor-pointer transition-colors w-16 text-center block">RULES</a>
-              <div className="w-[1px] h-12 bg-gray-700"></div>
-              <a href="/api-explorer" className="-rotate-90 hover:text-white cursor-pointer transition-colors w-16 text-center block">API</a>
-            </div>
-          </div>
-
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }
