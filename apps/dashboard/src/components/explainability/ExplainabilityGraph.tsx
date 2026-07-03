@@ -47,9 +47,10 @@ export function ExplainabilityGraph({ model, selectedNodeId, onNodeSelect }: Exp
         onNodeClick={onNodeClick}
         fitView
         proOptions={{ hideAttribution: true }}
+        colorMode="dark"
       >
         <Background color="#27272a" gap={16} />
-        <Controls className="bg-card border-border fill-foreground" />
+        <Controls />
       </ReactFlow>
     </div>
   );
