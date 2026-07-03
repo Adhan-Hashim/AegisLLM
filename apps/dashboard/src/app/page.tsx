@@ -28,7 +28,7 @@ export default function LandingPage() {
             </span>
           </div>
           
-          <img src="/logo.png" alt="AegisLLM Logo" className="w-[400px] md:w-[500px] lg:w-[600px] object-contain opacity-95 mb-6 drop-shadow-2xl" />
+          <img src="/logo.png" alt="AegisLLM Logo" className="w-[120px] md:w-[160px] lg:w-[200px] object-contain opacity-95 mb-6 drop-shadow-2xl" />
           
           <div className="flex justify-center text-center px-4">
             <p className="text-lg md:text-xl text-gray-400 font-light italic max-w-xl leading-snug">
