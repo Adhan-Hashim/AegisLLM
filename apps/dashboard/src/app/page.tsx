@@ -7,40 +7,30 @@ import { Terminal, ArrowRight } from "lucide-react";
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#111111] text-[#f4f4f4] font-sans selection:bg-orange-500/30 overflow-x-hidden">
-      {/* Minimal Navigation */}
-      <nav className="w-full px-8 md:px-16 py-12 flex justify-between items-start">
-        <div className="flex flex-col items-center">
-          {/* We do NOT invert this logo because the background is dark and the logo is white */}
-          <img src="/logo.png" alt="AegisLLM Logo" className="h-24 object-contain" />
-        </div>
-        
-        {/* Right side navigation - vertically aligned for aesthetic minimalism */}
-        <div className="hidden md:flex flex-col items-end space-y-4 pt-4 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
+      {/* Navigation */}
+      <nav className="w-full px-8 md:px-16 py-8 flex justify-end items-start">
+        <div className="hidden md:flex items-center space-x-12 text-xs font-semibold tracking-[0.2em] uppercase text-gray-500">
           <Link href="/attack-lab" className="hover:text-white transition-colors">Attack Lab</Link>
           <Link href="/rules-studio" className="hover:text-white transition-colors">Rules Studio</Link>
           <Link href="/sessions" className="hover:text-white transition-colors">Sessions</Link>
-          <div className="pt-4">
-            <Link href="/attack-lab" className="text-orange-500 hover:text-orange-400 border-b border-orange-500/50 pb-1">
-              Go to Console
-            </Link>
-          </div>
+          <Link href="/attack-lab" className="text-orange-500 hover:text-orange-400 border-b border-orange-500/50 pb-1">
+            Go to Console
+          </Link>
         </div>
       </nav>
 
       <main className="px-8 md:px-16 pt-16 pb-32 max-w-[1800px] mx-auto">
         {/* Hero Section */}
-        <div className="max-w-7xl">
-          <div className="flex items-center gap-4 mb-8">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center pt-10 pb-20">
+          <div className="flex items-center gap-4 mb-16">
             <span className="text-orange-500 font-bold tracking-widest text-sm uppercase">
               (1) Enterprise-Grade Security
             </span>
           </div>
           
-          <h1 className="text-[5rem] md:text-[8rem] lg:text-[11rem] font-black tracking-tighter leading-[0.85] text-white mb-12">
-            Welcome to<br/>AegisLLM.
-          </h1>
+          <img src="/logo.png" alt="AegisLLM Logo" className="w-[80vw] max-w-[800px] object-contain opacity-95 mb-16 drop-shadow-2xl" />
           
-          <div className="flex justify-center md:justify-start md:pl-[20%]">
+          <div className="flex justify-center text-center">
             <p className="text-2xl md:text-3xl text-gray-400 font-light italic max-w-2xl leading-snug">
               We help AI engineers realize the full potential of their security pipeline.
             </p>
