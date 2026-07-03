@@ -218,7 +218,7 @@ export default function AttackLabPage() {
               <h3 className="font-semibold text-sm flex items-center gap-2"><Link2 className="w-4 h-4" /> Explainability Graph</h3>
             </div>
             <div className="flex-1 bg-background/50 relative">
-              <ExplainabilityGraph model={null as any} />
+              <ExplainabilityGraph model={{ nodes: [], edges: [] }} />
             </div>
           </div>
 
