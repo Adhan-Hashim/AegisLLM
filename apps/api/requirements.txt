@@ -7,3 +7,4 @@ redis
 celery
 httpx
 sse-starlette
+../../packages/risk-engine
