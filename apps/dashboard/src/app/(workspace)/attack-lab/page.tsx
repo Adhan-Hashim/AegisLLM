@@ -241,6 +241,3 @@ export default function AttackLabPage() {
     </div>
   );
 }
-
-// Temporary icon imports needed due to inline addition
-import { Terminal } from "lucide-react";

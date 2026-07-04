@@ -12,9 +12,10 @@ interface ExplainabilityGraphProps {
 
 export function ExplainabilityGraph({ model, selectedNodeId, onNodeSelect }: ExplainabilityGraphProps) {
   // Convert our generic GraphModel to React Flow nodes/edges
-  const rfNodes: Node[] = model.nodes.map(node => ({
+  const rfNodes: Node[] = model.nodes.map((node, index) => ({
     id: node.id,
-    position: (node as any).position || { x: 250, y: 50 }, // Realistically layout logic belongs in the Builder, or a layout hook
+    type: 'default', // Force default type so React Flow actually renders it without needing custom node definitions
+    position: (node as any).position || { x: 250, y: 50 + (index * 120) }, // Layout vertically
     data: { label: node.label, ...node.data },
     style: {
       background: selectedNodeId === node.id ? '#1e40af' : '#111827',
