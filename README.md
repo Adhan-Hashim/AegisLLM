@@ -24,17 +24,17 @@ Most LLM applications trust every prompt. AegisLLM helps you build a secure peri
 
 ---
 
-## The AegisLLM Platform
+## ✨ The AegisLLM Platform
 
 AegisLLM goes beyond being a simple API by providing a comprehensive forensic and authoring platform built for the enterprise.
 
-- **Streaming Engine**: Evaluate risks live via Server-Sent Events with sub-20ms latency.
-- **Forensic Replay**: Don't just log events. Step through the exact reasoning graph to understand *why* a prompt was blocked or rewritten.
-- **Sessions Catalog**: Search, index, and filter millions of intercepted sessions instantly.
-- **Rules Studio**: Author detectors dynamically using a pure declarative YAML schema. 
-- **Attack Lab**: A built-in SSE streaming workspace to stress-test your rules with malicious payloads.
+- ⚡ **Streaming Engine**: Evaluate risks live via Server-Sent Events with sub-20ms latency.
+- 🔍 **Forensic Replay**: Don't just log events. Step through the exact reasoning graph to understand *why* a prompt was blocked or rewritten.
+- 🗂️ **Sessions Catalog**: Search, index, and filter millions of intercepted sessions instantly.
+- 🛠️ **Rules Studio**: Author detectors dynamically using a pure declarative YAML schema. 
+- 🧪 **Attack Lab**: A built-in SSE streaming workspace to stress-test your rules with malicious payloads.
 
-## Dashboard Preview
+## 📸 Dashboard Preview
 
 ### Security Console
 ![Security Console Dashboard](apps/dashboard/public/screenshots/security_console_dashboard.png)
@@ -47,7 +47,7 @@ AegisLLM goes beyond being a simple API by providing a comprehensive forensic an
 
 ---
 
-## 5-Minute Quickstart
+## 🚀 5-Minute Quickstart
 
 AegisLLM is designed for maximum developer velocity and runs anywhere via Docker Compose.
 
@@ -69,13 +69,27 @@ docker compose up -d
 # or ./scripts/verify.sh on Linux/Mac
 ```
 
-**That's it.**
-- Open the Dashboard at [http://localhost:3000](http://localhost:3000)
-- Access the REST API Docs at [http://localhost:8000/docs](http://localhost:8000/docs)
+🎉 **That's it.**
+- Open your local Dashboard at [http://localhost:3000](http://localhost:3000)
+- Access the local REST API Docs at [http://localhost:8000/docs](http://localhost:8000/docs)
+
+*(Note: The `localhost` links above apply when you are running your own AegisLLM instance locally via Docker. If you just want to see it in action without installing anything, check out our Live Demo below!)*
 
 ---
 
-## Performance Benchmarks
+## 🌐 Live Demo
+
+Don't want to install it locally? You can explore the fully functional dashboard here:
+
+👉 **[AegisLLM Live Demo](https://aegis-llm-orpin.vercel.app/)**
+
+- Check out the **Security Console** to see the live feed.
+- Try the **Attack Lab** to simulate real prompt injections.
+- Explore the **Replay Center** to run regression tests on historical events.
+
+---
+
+## 📊 Performance Benchmarks
 
 AegisLLM is built for the critical path. Our engine executes complex multi-rule evaluations concurrently.
 
@@ -91,7 +105,7 @@ AegisLLM is built for the critical path. Our engine executes complex multi-rule 
 
 ---
 
-## Architecture Stack
+## 🏗️ Architecture Stack
 
 AegisLLM is powered by a modern, high-performance tech stack:
 
@@ -102,31 +116,31 @@ AegisLLM is powered by a modern, high-performance tech stack:
 
 ---
 
-## Documentation
+## 📚 Documentation
 
 Detailed documentation is available in the `docs/` directory:
 
-- [Architecture Guide](ARCHITECTURE.md)
-- [API Reference](docs/api/README.md)
-- [Rules Studio Reference](docs/rules-studio/README.md)
-- [Replay & Explanation Engine](docs/replay/README.md)
+- 🏛️ [Architecture Guide](ARCHITECTURE.md)
+- 🔌 [API Reference](docs/api/README.md)
+- 📝 [Rules Studio Reference](docs/rules-studio/README.md)
+- 🕵️‍♂️ [Replay & Explanation Engine](docs/replay/README.md)
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions of all sizes! Whether it's adding a new Rule Pack, optimizing the engine, or fixing typos.
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to set up your local development environment, run the typecheckers, linters, and execute the test suites.
 
-## Security
+## 🛡️ Security
 
 If you discover a security vulnerability, please refer to [SECURITY.md](SECURITY.md) for our responsible disclosure process. Do not file a public issue for security-related flaws.
 
 ---
 
 <div align="center">
-  <p>Built for the open-source AI community.</p>
+  <p>Built with ❤️ for the open-source AI community.</p>
   <p>
     <a href="LICENSE">MIT License</a> &copy; Adhan Hashim
   </p>
