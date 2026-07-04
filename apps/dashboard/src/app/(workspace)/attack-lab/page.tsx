@@ -21,7 +21,7 @@ export default function AttackLabPage() {
     setRunning(true);
     
     streamService.connect(
-      `${API_BASE_URL}/analyze/stream`,
+      `${API_BASE_URL}/v1/analyze/stream`,
       { prompt, metadata: { source: "attack-lab" } },
       (msg) => {
         addEvent(msg);

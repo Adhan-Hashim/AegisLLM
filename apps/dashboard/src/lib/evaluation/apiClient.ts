@@ -4,7 +4,7 @@ import { EvaluationRequest, EvaluationError, EvaluationErrorCodes } from './type
 export class EvaluationApiClient {
   static async evaluate(request: EvaluationRequest, signal: AbortSignal): Promise<any> {
     try {
-      const response = await fetch(`${API_BASE_URL}/rules/evaluate`, {
+      const response = await fetch(`${API_BASE_URL}/v1/rules/evaluate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
