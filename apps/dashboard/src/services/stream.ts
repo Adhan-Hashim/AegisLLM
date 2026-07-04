@@ -31,8 +31,8 @@ export class StreamService {
 
         buffer += decoder.decode(value, { stream: true });
         
-        // Split by double newline which dictates SSE event boundaries
-        const chunks = buffer.split('\n\n');
+        // Split by double newline which dictates SSE event boundaries (handle both \n\n and \r\n\r\n)
+        const chunks = buffer.split(/\r?\n\r?\n/);
         buffer = chunks.pop() || ""; // Keep the incomplete chunk in the buffer
 
         for (const chunk of chunks) {
