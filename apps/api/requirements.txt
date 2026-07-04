@@ -6,3 +6,4 @@ pydantic-settings
 redis
 celery
 httpx
+sse-starlette
