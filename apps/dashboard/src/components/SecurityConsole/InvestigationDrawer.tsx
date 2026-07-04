@@ -140,22 +140,41 @@ export function InvestigationDrawer({ incident, onClose }: InvestigationDrawerPr
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Matched Rules</h3>
+                    <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3 flex items-center justify-between">
+                      <span>Matched Rules</span>
+                      <span className="text-gray-500 font-mono">Exec Time</span>
+                    </h3>
                     <div className="flex items-center justify-between p-3 rounded bg-background/50 border border-border/30">
-                      <span className="text-sm font-mono text-gray-200">PI-001 (Basic Injection)</span>
-                      <ShieldAlert className="w-4 h-4 text-destructive" />
+                      <div className="flex items-center gap-2">
+                        <ShieldAlert className="w-4 h-4 text-destructive" />
+                        <span className="text-sm font-mono text-gray-200">PI-001 (Basic Injection)</span>
+                      </div>
+                      <span className="text-xs font-mono text-gray-400">4 ms</span>
                     </div>
                     <div className="flex items-center justify-between p-3 rounded bg-background/50 border border-border/30">
-                      <span className="text-sm font-mono text-gray-200">PI-003 (Roleplay Jailbreak)</span>
-                      <ShieldAlert className="w-4 h-4 text-destructive" />
+                      <div className="flex items-center gap-2">
+                        <ShieldAlert className="w-4 h-4 text-destructive" />
+                        <span className="text-sm font-mono text-gray-200">PI-003 (Roleplay Jailbreak)</span>
+                      </div>
+                      <span className="text-xs font-mono text-gray-400">6 ms</span>
                     </div>
                     <div className="flex items-center justify-between p-3 rounded bg-background/50 border border-border/30">
-                      <span className="text-sm font-mono text-gray-200">{incident.rule}</span>
-                      <ShieldAlert className="w-4 h-4 text-destructive" />
+                      <div className="flex items-center gap-2">
+                        <ShieldAlert className="w-4 h-4 text-destructive" />
+                        <span className="text-sm font-mono text-gray-200">{incident.rule}</span>
+                      </div>
+                      <span className="text-xs font-mono text-gray-400">4 ms</span>
                     </div>
                     <div className="flex items-center justify-between p-3 rounded bg-background/50 border border-border/30 opacity-50">
-                      <span className="text-sm font-mono text-gray-400">Toxicity</span>
-                      <span className="text-xs text-gray-500">—</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-mono text-gray-400">Toxicity</span>
+                      </div>
+                      <span className="text-xs font-mono text-gray-500">2 ms</span>
+                    </div>
+                    
+                    <div className="pt-2 flex items-center justify-between text-xs font-mono">
+                      <span className="text-gray-500">Total Latency</span>
+                      <span className="text-white font-bold">16 ms</span>
                     </div>
                   </div>
                 </motion.div>
