@@ -91,12 +91,30 @@ export default function SecurityConsole() {
         >
           
           {/* Top KPI Cards */}
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-5 gap-6">
+            <motion.div variants={itemVars} className="glass-card p-5 relative overflow-hidden group border-primary/30 bg-primary/5">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Target className="w-16 h-16 text-primary" />
+              </div>
+              <p className="text-xs font-bold text-primary uppercase tracking-wider">Security Score</p>
+              <div className="mt-2 flex items-baseline gap-2">
+                <h2 className="text-3xl font-black text-primary">98<span className="text-xl text-muted-foreground">/100</span></h2>
+                <span className="text-xs text-success font-bold flex items-center">Excellent (↑ 2.4%)</span>
+              </div>
+              <div className="h-8 mt-4">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={sparklineData}>
+                     <Area type="monotone" dataKey="value" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.2} strokeWidth={2} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </motion.div>
+
             <motion.div variants={itemVars} className="glass-card p-5 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <ShieldAlert className="w-16 h-16 text-primary" />
               </div>
-              <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Threat Detection Rate</p>
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Detection Rate</p>
               <div className="mt-2 flex items-baseline gap-2">
                 <h2 className="text-3xl font-black">99.8%</h2>
                 <span className="text-xs text-success font-bold flex items-center">↑ 0.2%</span>
