@@ -34,6 +34,17 @@ AegisLLM goes beyond being a simple API by providing a comprehensive forensic an
 - 🛠️ **Rules Studio**: Author detectors dynamically using a pure declarative YAML schema. 
 - 🧪 **Attack Lab**: A built-in SSE streaming workspace to stress-test your rules with malicious payloads.
 
+## 📸 Dashboard Preview
+
+### Security Console
+![Security Console Dashboard](apps/dashboard/public/screenshots/security_console_dashboard.png)
+
+### Threat Investigation Drawer
+![Threat Investigation Drawer](apps/dashboard/public/screenshots/threat_investigation_drawer.png)
+
+### Replay Center (Regression Testing)
+![Replay Center](apps/dashboard/public/screenshots/replay_center.png)
+
 ---
 
 ## 🚀 5-Minute Quickstart
