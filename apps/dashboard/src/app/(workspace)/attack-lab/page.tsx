@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useAttackLabStore } from "@/store/attackLab";
 import { streamService } from "@/services/stream";
 import { API_BASE_URL } from "@/services/api";
-import { Play, Box, CheckCircle, Activity, Clock, Server, Copy, Download, Link2, ShieldAlert } from "lucide-react";
+import { Play, Box, CheckCircle, Activity, Clock, Server, Copy, Download, Link2, ShieldAlert, Terminal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExplainabilityGraph } from "@/components/explainability/ExplainabilityGraph";
 import { InspectorPanel } from "@/components/inspector/InspectorPanel";
 import { DiagnosticsPanel } from "@/components/inspector/DiagnosticsPanel";
+import { GraphBuilder } from "@/lib/replay/builders/graphBuilder";
 
 export default function AttackLabPage() {
   const [prompt, setPrompt] = useState("");
@@ -218,7 +219,7 @@ export default function AttackLabPage() {
               <h3 className="font-semibold text-sm flex items-center gap-2"><Link2 className="w-4 h-4" /> Explainability Graph</h3>
             </div>
             <div className="flex-1 bg-background/50 relative">
-              <ExplainabilityGraph model={{ nodes: [], edges: [] }} />
+              <ExplainabilityGraph model={useMemo(() => new GraphBuilder().build({ findings, decision } as any), [findings, decision])} />
             </div>
           </div>
 
